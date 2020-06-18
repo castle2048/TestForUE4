@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TestForJar-->
+<!--官方文档：https://docs.unrealengine.com/zh-CN/Platforms/Mobile/UnrealPluginLanguage/index.html -->
+<!--知乎：https://zhuanlan.zhihu.com/p/34374244 -->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+  <init>
+    <!--Init-->
+    <log text="TestBlank init"/>
+  </init>
+
+  <androidManifestUpdates>
+    <!--添加各种权限-->
+    <addPermission android:name="android.permission.INTERNET" />
+  </androidManifestUpdates>
+
+  <prebuildCopies>
+    <!--目录文件拷贝-->
+    <copyDir src="$S(PluginDir)/java" dst="$S(BuildDir)/src" />
+  </prebuildCopies>
+
+  <resourceCopies>
+    <!--指定源和目标文件拷贝-->
+    <isArch arch ="armeabi-v7a">
+      <copyFile src ="$S(PluginDir)/Android/lib/librarydemo.jar"
+                dst ="$S(BuildDir)/libs/librarydemo.jar"/>
+      
+    </isArch>
+  </resourceCopies>
+
+  <proguardAdditions>
+    <!--代码混淆-->
+  </proguardAdditions>
+
+  <gameActivityImportAdditions>
+    <insert>
+      <!--插入引用-->
+      import com.example.testreadjar2.TestCallJar;
+    </insert>
+  </gameActivityImportAdditions>
+
+  <gameActivityClassAdditions>
+    <insert>
+      <!--插入成员变量/函数-->
+      public void AndroidThunkJava_TestCallJar(){
+      Log.debug("error: cc AndroidThunkJava_TestCallJar ");
+      TestCallJar tc = new TestCallJar();
+      tc.TestCall();
+      }
+    </insert>
+  </gameActivityClassAdditions>
+
+  <gameActivityOnCreateAdditions>
+    <insert>
+      <!--GameActivity.java OnCreateAdditions函数补充？？？-->
+      System.out.println("error: cc OnCreateAdditions TestAddFun");
+    </insert>
+  </gameActivityOnCreateAdditions>
+
+  <gameActivityOnResumeAdditions>
+    <insert>
+      <!--GameActivity.java OnResume-->
+    </insert>
+  </gameActivityOnResumeAdditions>
+
+  <gameActivityOnPauseAdditions>
+    <insert>
+      <!--GameActivity.java OnPause-->
+    </insert>
+  </gameActivityOnPauseAdditions>
+
+  <gameActivityOnDestroyAdditions>
+    <insert>
+      <!--GameActivity.java OnDestroy-->
+    </insert>
+  </gameActivityOnDestroyAdditions>
+
+  <soLoadLibrary>
+    <!--在GameActivity.java中指定so库先于LibUE4.so加载-->
+  </soLoadLibrary>
+  
+</root>

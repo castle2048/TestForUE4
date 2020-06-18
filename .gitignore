@@ -1,0 +1,15 @@
+#测试工程
+/.vs/
+/Binaries/
+/Build/
+Content/Collections/
+Content/Developers/
+/Saved/
+*.sln
+/Pac/
+/Intermediate/
+/DerivedDataCache/
+#-----------Pugins------------
+Plugins/TestBlank/Intermediate/
+Plugins/TestBlueprintLibrary/Intermediate/
+Plugins/TestThirdParty/Intermediate/
