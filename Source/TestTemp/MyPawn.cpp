@@ -2,6 +2,7 @@
 
 
 #include "MyPawn.h"
+#include "../../../../../../epic/UE_4.22/Engine/Source/Runtime/Engine/Classes/Engine/CollisionProfile.h"
 
 // Sets default values
 AMyPawn::AMyPawn()
@@ -11,11 +12,18 @@ AMyPawn::AMyPawn()
 
 	PawnRoot = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 
+	CapsuleBody = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Body"));
+	CapsuleBody->SetupAttachment(PawnRoot);
+	CapsuleBody->InitCapsuleSize(34.f, 88.f);
+	CapsuleBody->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
+
 	CameraRoot = CreateDefaultSubobject<USceneComponent>(TEXT("CameraRoot"));
 	CameraRoot->SetupAttachment(GetRootComponent());
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(CameraRoot);
+
+	
 
 }
 

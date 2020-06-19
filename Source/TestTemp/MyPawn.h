@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "MyPawn.generated.h"
 
 UCLASS()
@@ -24,6 +25,8 @@ protected:
 		UCameraComponent* Camera;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = true), Category = PawnComponent)
 		USceneComponent* CameraRoot;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = PawnComponent)
+		UCapsuleComponent* CapsuleBody;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
