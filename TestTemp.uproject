@@ -1,13 +1,16 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.22",
+	"EngineAssociation": "{1E47AD19-4F4F-7DEF-BFAF-96A9EB83E2C3}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
 			"Name": "TestTemp",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
